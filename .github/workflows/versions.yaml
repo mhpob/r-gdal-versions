@@ -1,0 +1,30 @@
+on:
+  workflow_dispatch:
+
+name: check-gdal-version
+
+jobs:
+  check-versions:
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.config.os }}
+
+    strategy:
+      matrix:
+        config:
+          - {os: macos-latest} #arm
+          - {os: macos-13}
+          - {os: windows-latest}
+          - {os: ubuntu-latest}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: cran::sf
+
+      - run: |
+          Rscript -e "sf::extSoftVersion()"
