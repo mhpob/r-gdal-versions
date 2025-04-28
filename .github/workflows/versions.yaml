@@ -24,4 +24,4 @@ jobs:
       - run: Rscript -e "install.packages('sf', type = 'binary')"
 
       - run: |
-          Rscript -e "sf::extSoftVersion()"
+          Rscript -e "sf::sf_extSoftVersion()"
