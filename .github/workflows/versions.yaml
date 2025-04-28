@@ -22,6 +22,9 @@ jobs:
 
       - uses: r-lib/actions/setup-r@v2
 
+      - if: runner.os == 'Linux'
+        run: apt-get -y update && apt-get install -y  libudunits2-dev libgdal-dev libgeos-dev libproj-dev
+
       - run: Rscript -e "install.packages('sf')"
 
       - run: |
