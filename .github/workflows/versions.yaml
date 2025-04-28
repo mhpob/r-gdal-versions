@@ -25,3 +25,6 @@ jobs:
 
       - run: |
           Rscript -e "sf::sf_extSoftVersion()"
+
+      - run: |
+          Rscript -e "sf::st_crs(4326)"
